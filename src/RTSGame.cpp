@@ -1,12 +1,15 @@
-﻿// RTSGame.cpp : Defines the entry point for the application.
-//
+﻿#include <SFML/Graphics.hpp>
 
-#include "RTSGame.h"
+int main() {
+  auto window = sf::RenderWindow(sf::VideoMode({720u, 480u}), "Hello, SFML!");
 
-using namespace std;
+  while (window.isOpen()) {
+    while (const std::optional event = window.pollEvent()) {
+      if (!event->is<sf::Event::Closed>()) break;
+      window.close();
+    }
 
-int main()
-{
-	cout << "Hello CMake." << endl;
-	return 0;
+    window.clear();
+    window.display();
+  }
 }

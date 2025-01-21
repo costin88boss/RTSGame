@@ -1,23 +1,25 @@
-﻿cmake_minimum_required(VERSION 3.20)
-
+﻿cmake_minimum_required(VERSION 3.28)
+set(CMAKE_CXX_STANDARD 20)
 project(RTSGame)
 
-set(CMAKE_CXX_STANDARD 20)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
-set(CMAKE_CXX_COMPILER clang++)
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/out/bin)
+set(FETCHCONTENT_BASE_DIR ${PROJECT_SOURCE_DIR}/src/ext/)
 
 include(FetchContent)
-
 FetchContent_Declare(
-    SFML
-    GIT_REPOSITORY https://github.com/SFML/SFML.git
-    GIT_TAG master
+        SFML
+        GIT_REPOSITORY https://github.com/SFML/SFML.git
+        GIT_TAG 3.0.0
+        GIT_SHALLOW ON
+        EXCLUDE_FROM_ALL
+        SYSTEM
 )
-
 FetchContent_MakeAvailable(SFML)
 
-file(GLOB_RECURSE SOURCES src/*.cpp src/*.h)
+set(
+        SOURCES
+        src/RTSGame.cpp
+)
 
-add_executable(RTSGame ${SOURCES})
-
-target_link_libraries(RTSGame PRIVATE sfml-graphics sfml-window sfml-system)
+add_executable(${PROJECT_NAME} ${SOURCES})
+target_link_libraries(${PROJECT_NAME} PRIVATE SFML::Graphics)
