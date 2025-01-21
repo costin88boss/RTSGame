@@ -16,11 +16,11 @@ jobs:
       matrix:
         platform:
           - { name: Windows Clang, os: windows-latest, flags: -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++  }
-          - { name: Linux Clang,   os: ubuntu-latest,  flags: -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++ }
+          - { name: Ubuntu Clang,  os: ubuntu-latest,  flags: -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++ }
           - { name: macOS Clang,   os: macos-latest,   flags: -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++  }
         config:
-          - { name: Shared, flags: -DBUILD_SHARED_LIBS=TRUE }
-          - { name: Static, flags: -DBUILD_SHARED_LIBS=FALSE }
+          - { name: Debug, flags:   -DCMAKE_BUILD_TYPE=Debug }
+          - { name: Release, flags: -DCMAKE_BUILD_TYPE=Release }
 
     steps:
       - name: Install Linux Dependencies
