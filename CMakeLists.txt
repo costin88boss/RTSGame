@@ -3,7 +3,7 @@ set(CMAKE_CXX_STANDARD 20)
 project(RTSGame)
 
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/out/bin)
-set(FETCHCONTENT_BASE_DIR ${PROJECT_SOURCE_DIR}/src/ext/)
+set(FETCHCONTENT_BASE_DIR ${PROJECT_SOURCE_DIR}/deps/)
 
 include(FetchContent)
 FetchContent_Declare(
