@@ -3,7 +3,7 @@ set(CMAKE_CXX_STANDARD 20)
 project(RTSGame)
 
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/out/bin)
-set(FETCHCONTENT_BASE_DIR ${PROJECT_SOURCE_DIR}/src/ext/)
+set(FETCHCONTENT_BASE_DIR ${PROJECT_SOURCE_DIR}/deps/)
 
 include(FetchContent)
 FetchContent_Declare(
@@ -16,10 +16,10 @@ FetchContent_Declare(
 )
 FetchContent_MakeAvailable(SFML)
 
-set(
-        SOURCES
-        src/RTSGame.cpp
+set(SOURCES
+    "src/NetTest.cpp"
+    "src/RTSGame.cpp"
 )
 
 add_executable(${PROJECT_NAME} ${SOURCES})
-target_link_libraries(${PROJECT_NAME} PRIVATE SFML::Graphics)
+target_link_libraries(${PROJECT_NAME} PRIVATE SFML::Graphics SFML::Audio SFML::Network)

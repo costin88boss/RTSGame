@@ -1,7 +1,7 @@
 .idea/
 .vs/
 
+deps/
 out/
-src/ext/
 
 .github/
