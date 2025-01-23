@@ -1,7 +1,9 @@
+.DS_Store
 .idea/
 .vs/
 
 deps/
+src/ext/
 out/
 
 .github/

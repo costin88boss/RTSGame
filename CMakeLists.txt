@@ -1,9 +1,9 @@
-﻿cmake_minimum_required(VERSION 3.28)
+﻿cmake_minimum_required(VERSION 3.25)
 set(CMAKE_CXX_STANDARD 20)
 project(RTSGame)
 
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/out/bin)
-set(FETCHCONTENT_BASE_DIR ${PROJECT_SOURCE_DIR}/deps/)
+set(FETCHCONTENT_BASE_DIR ${PROJECT_SOURCE_DIR}/src/ext/)
 
 include(FetchContent)
 FetchContent_Declare(
@@ -14,11 +14,17 @@ FetchContent_Declare(
         EXCLUDE_FROM_ALL
         SYSTEM
 )
+
 FetchContent_MakeAvailable(SFML)
 
-set(SOURCES
-    "src/NetTest.cpp"
-    "src/RTSGame.cpp"
+set(
+        SOURCES
+        src/RTSGame.cpp
+        src/NetTest.cpp
+        src/Grid.cpp
+        src/Grid.hpp
+        src/Tile.cpp
+        src/Tile.hpp
 )
 
 add_executable(${PROJECT_NAME} ${SOURCES})
