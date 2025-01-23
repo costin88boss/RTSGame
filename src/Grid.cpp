@@ -1,6 +1,7 @@
 #include "Grid.hpp"
 
 #include "Transform.hpp"
+#include "Unit.hpp"
 
 Grid::Grid(sf::RenderWindow& window, const unsigned int width, const unsigned int height, const TileInfo tileInfo)
 : m_window(window)
@@ -23,6 +24,14 @@ void Grid::render() const {
     for (unsigned int i = 0; i < m_tiles.size(); i++) {
         rect.setPosition(
             sf::Vector2f(getTileGridPosition(i)) * (tileScreenSize + tileScreenPadding) + getGridCenterOffset());
+        m_window.draw(rect);
+    }
+
+    rect.setFillColor(sf::Color::White);
+
+    for (const auto& unit : m_units) {
+        rect.setPosition(
+            sf::Vector2f(unit.m_worldPosition) * (tileScreenSize + tileScreenPadding) + getGridCenterOffset());
         m_window.draw(rect);
     }
 }
@@ -51,6 +60,29 @@ sf::Vector2u Grid::getTileGridPosition(const sf::Vector2f worldPosition) const {
     return sf::Vector2u(worldPosition / (m_tileInfo.tileSize + m_tileInfo.tilePadding));
 }
 
-unsigned int Grid::getTileIndex(const sf::Vector2f tileGridPosition) const {
+unsigned int Grid::getTileIndex(const sf::Vector2u tileGridPosition) const {
     return tileGridPosition.y * m_width + tileGridPosition.x;
+}
+
+Unit& Grid::createUnit(const sf::Vector2u tileGridPosition) {
+    unsigned int index = 0;
+    while (containsUnitWithIndex(index)) {
+        index++;
+    }
+
+    return m_units.emplace_back(index, std::make_shared<Grid>(*this), sf::Vector2f(tileGridPosition));
+}
+
+void Grid::deleteUnit(const unsigned int unitIndex) {
+    std::erase_if(m_units, [&](const Unit& unit) { return unit.m_unitIndex == unitIndex; });
+}
+
+bool Grid::containsUnitWithIndex(const unsigned int index) const {
+    for (const auto& unit : m_units) {
+        if (unit.m_unitIndex == index) {
+            return true;
+        }
+    }
+
+    return false;
 }

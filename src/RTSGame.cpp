@@ -8,10 +8,12 @@ namespace netTest {
 }
 
 int main() {
-    auto window = sf::RenderWindow(sf::VideoMode({720, 480}), "Hello, SFML!");
     // netTest::testMain();
-    const Grid grid(window, 16, 16);
-    Transform::pixelsPerUnit = 25u;
+
+    auto window = sf::RenderWindow(sf::VideoMode({720, 480}), "Hello, SFML!");
+
+    Grid grid(window, 16, 16);
+    auto& unit = grid.createUnit({0, 0});
 
     while (window.isOpen()) {
         while (const std::optional event = window.pollEvent()) {
@@ -19,12 +21,21 @@ int main() {
                 window.close();
         }
 
+        if (isKeyPressed(sf::Keyboard::Key::Right)) {
+            unit.move({0.01f, 0.0f});
+        }
+        if (isKeyPressed(sf::Keyboard::Key::Left)) {
+            unit.move({-0.01f, 0.0f});
+        }
+        if (isKeyPressed(sf::Keyboard::Key::Down)) {
+            unit.move({0.0f, 0.01f});
+        }
+        if (isKeyPressed(sf::Keyboard::Key::Up)) {
+            unit.move({0.0f, -0.01f});
+        }
+
         window.clear();
         grid.render();
         window.display();
-
-        std::cout << "You are touching tile " <<
-            grid.getTileGridPosition(sf::Mouse::getPosition(window)).x << ", " <<
-            grid.getTileGridPosition(sf::Mouse::getPosition(window)).y << '\n';
     }
 }

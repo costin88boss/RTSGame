@@ -27,6 +27,8 @@ set(
         src/Tile.hpp
         src/Transform.cpp
         src/Transform.hpp
+        src/Unit.cpp
+        src/Unit.hpp
 )
 
 add_executable(${PROJECT_NAME} ${SOURCES})
