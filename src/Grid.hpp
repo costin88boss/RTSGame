@@ -8,7 +8,7 @@
 struct TileInfo {
     float     tileSize    = 1.0f; // World Transform Size
     float     tilePadding = 0.1f; // World Transform Padding
-    sf::Color tileColor   = sf::Color::Green;
+    sf::Color tileColor   = {50, 100, 50};
 };
 
 class Grid {

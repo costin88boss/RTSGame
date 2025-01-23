@@ -12,7 +12,7 @@ int main() {
 
     auto window = sf::RenderWindow(sf::VideoMode({720, 480}), "Hello, SFML!");
 
-    Grid grid(window, 16, 16);
+    Grid grid(window, 24, 16);
     auto& unit = grid.createUnit({0, 0});
 
     while (window.isOpen()) {

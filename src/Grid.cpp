@@ -14,7 +14,7 @@ Grid::Grid(sf::RenderWindow& window, const unsigned int width, const unsigned in
 }
 
 void Grid::render() const {
-    const float tileScreenSize = m_tileInfo.tileSize * Transform::pixelsPerUnit;
+    const float tileScreenSize    = m_tileInfo.tileSize    * Transform::pixelsPerUnit;
     const float tileScreenPadding = m_tileInfo.tilePadding * Transform::pixelsPerUnit;
 
     sf::RectangleShape rect;
@@ -27,7 +27,7 @@ void Grid::render() const {
         m_window.draw(rect);
     }
 
-    rect.setFillColor(sf::Color::White);
+    rect.setFillColor(sf::Color::Cyan);
 
     for (const auto& unit : m_units) {
         rect.setPosition(
@@ -48,7 +48,7 @@ sf::Vector2f Grid::getGridCenterOffset() const {
 }
 
 sf::Vector2u Grid::getTileGridPosition(const unsigned int tileIndex) const {
-    return {tileIndex % m_width, tileIndex / m_height};
+    return {tileIndex % m_width, tileIndex / m_width};
 }
 
 sf::Vector2u Grid::getTileGridPosition(const sf::Vector2i screenPosition) const {
