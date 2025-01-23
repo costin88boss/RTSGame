@@ -1,7 +1,14 @@
 ﻿#include <SFML/Graphics.hpp>
+#include <SFML/Network.hpp>
+
+namespace netTest {
+    extern void testMain();
+}
 
 int main() {
-    auto window = sf::RenderWindow(sf::VideoMode({720u, 480u}), "Hello, SFML!");
+   // auto window = sf::RenderWindow(sf::VideoMode({720, 480}), "Hello, SFML!");
+    
+    netTest::testMain(); /*
 
     while (window.isOpen()) {
         while (const std::optional event = window.pollEvent()) {
@@ -11,6 +18,9 @@ int main() {
         }
 
         window.clear();
+
+
+
         window.display();
-    }
+    }*/
 }
