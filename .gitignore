@@ -3,7 +3,6 @@
 .vs/
 
 deps/
-src/ext/
 out/
 
 .github/

@@ -25,6 +25,8 @@ set(
         src/Grid.hpp
         src/Tile.cpp
         src/Tile.hpp
+        src/Transform.cpp
+        src/Transform.hpp
 )
 
 add_executable(${PROJECT_NAME} ${SOURCES})
