@@ -29,6 +29,7 @@ set(
         src/Transform.hpp
         src/Unit.cpp
         src/Unit.hpp
+        src/Debug.hpp
 )
 
 add_executable(${PROJECT_NAME} ${SOURCES})
