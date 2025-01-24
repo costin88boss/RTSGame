@@ -14,8 +14,8 @@ Grid::Grid(sf::RenderWindow& window, const unsigned int width, const unsigned in
 }
 
 void Grid::render() const {
-    const float tileScreenSize    = m_tileInfo.tileSize    * Transform::pixelsPerUnit;
-    const float tileScreenPadding = m_tileInfo.tilePadding * Transform::pixelsPerUnit;
+    const float tileScreenSize    = m_tileInfo.tileSize    * static_cast<float>(Transform::pixelsPerUnit);
+    const float tileScreenPadding = m_tileInfo.tilePadding * static_cast<float>(Transform::pixelsPerUnit);
 
     sf::RectangleShape rect;
     rect.setSize({tileScreenSize, tileScreenSize});
@@ -37,12 +37,14 @@ void Grid::render() const {
 }
 
 sf::Vector2f Grid::getGridCenterOffset() const {
-    const float tileScreenSize    = m_tileInfo.tileSize    * Transform::pixelsPerUnit;
-    const float tileScreenPadding = m_tileInfo.tilePadding * Transform::pixelsPerUnit;
+    const float tileScreenSize    = m_tileInfo.tileSize    * static_cast<float>(Transform::pixelsPerUnit);
+    const float tileScreenPadding = m_tileInfo.tilePadding * static_cast<float>(Transform::pixelsPerUnit);
 
     const sf::Vector2f windowSize = sf::Vector2f(m_window.getSize());
     const sf::Vector2f gridScreenSize = {
-        m_width * (tileScreenSize + tileScreenPadding), m_height * (tileScreenSize + tileScreenPadding)};
+        static_cast<float>(m_width)  * (tileScreenSize + tileScreenPadding),
+        static_cast<float>(m_height) * (tileScreenSize + tileScreenPadding)
+    };
 
     return (windowSize - gridScreenSize) / 2.0f;
 }
@@ -60,8 +62,16 @@ sf::Vector2u Grid::getTileGridPosition(const sf::Vector2f worldPosition) const {
     return sf::Vector2u(worldPosition / (m_tileInfo.tileSize + m_tileInfo.tilePadding));
 }
 
+sf::Vector2f Grid::getTileWorldPosition(const sf::Vector2u gridPosition) const {
+    return sf::Vector2f(gridPosition) * (m_tileInfo.tileSize + m_tileInfo.tilePadding);
+}
+
 unsigned int Grid::getTileIndex(const sf::Vector2u tileGridPosition) const {
     return tileGridPosition.y * m_width + tileGridPosition.x;
+}
+
+TileInfo Grid::getTileInfo() const {
+    return m_tileInfo;
 }
 
 Unit& Grid::createUnit(const sf::Vector2u tileGridPosition) {
@@ -78,11 +88,5 @@ void Grid::deleteUnit(const unsigned int unitIndex) {
 }
 
 bool Grid::containsUnitWithIndex(const unsigned int index) const {
-    for (const auto& unit : m_units) {
-        if (unit.m_unitIndex == index) {
-            return true;
-        }
-    }
-
-    return false;
+    return std::ranges::any_of(m_units, [&](const Unit& unit) { return unit.m_unitIndex == index; });
 }

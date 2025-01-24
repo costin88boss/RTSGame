@@ -14,6 +14,14 @@ int main() {
 
     Grid grid(window, 24, 16);
     auto& unit = grid.createUnit({0, 0});
+    unit.setTargetTile({5u, 5u});
+
+    sf::Clock clock;
+    float deltaTime = 0.0f;
+
+    const sf::Font font("../../res/fonts/Roboto-Regular.ttf");
+    sf::Text text(font);
+    text.setFillColor(sf::Color::Green);
 
     while (window.isOpen()) {
         while (const std::optional event = window.pollEvent()) {
@@ -21,21 +29,16 @@ int main() {
                 window.close();
         }
 
-        if (isKeyPressed(sf::Keyboard::Key::Right)) {
-            unit.move({0.01f, 0.0f});
-        }
-        if (isKeyPressed(sf::Keyboard::Key::Left)) {
-            unit.move({-0.01f, 0.0f});
-        }
-        if (isKeyPressed(sf::Keyboard::Key::Down)) {
-            unit.move({0.0f, 0.01f});
-        }
-        if (isKeyPressed(sf::Keyboard::Key::Up)) {
-            unit.move({0.0f, -0.01f});
-        }
+        unit.moveToTarget(deltaTime);
 
         window.clear();
         grid.render();
+        window.draw(text);
         window.display();
+
+        deltaTime = clock.getElapsedTime().asSeconds();
+        text.setString(std::to_string(static_cast<int>(1.0f / deltaTime)));
+
+        clock.restart();
     }
 }

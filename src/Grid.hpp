@@ -18,16 +18,22 @@ public:
     void render() const;
 
     [[nodiscard]] sf::Vector2f getGridCenterOffset() const;
+
     [[nodiscard]] sf::Vector2u getTileGridPosition(unsigned int tileIndex) const;
     [[nodiscard]] sf::Vector2u getTileGridPosition(sf::Vector2i screenPosition) const;
     [[nodiscard]] sf::Vector2u getTileGridPosition(sf::Vector2f worldPosition) const;
+
+    [[nodiscard]] sf::Vector2f getTileWorldPosition(sf::Vector2u gridPosition) const;
+
     [[nodiscard]] unsigned int getTileIndex(sf::Vector2u tileGridPosition) const;
+
+    [[nodiscard]] TileInfo getTileInfo() const;
 
     Unit& createUnit(sf::Vector2u tileGridPosition);
     void deleteUnit(unsigned int unitIndex);
 
 private:
-    bool containsUnitWithIndex(unsigned int index) const;
+    [[nodiscard]] bool containsUnitWithIndex(unsigned int index) const;
 
     std::vector<Tile> m_tiles;
     std::vector<Unit> m_units;
