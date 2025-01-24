@@ -1,5 +1,8 @@
 #include "Grid.hpp"
 
+#include <algorithm>
+#include <vector>
+#include <SFML/Graphics.hpp>
 #include "Transform.hpp"
 #include "Unit.hpp"
 
@@ -88,5 +91,6 @@ void Grid::deleteUnit(const unsigned int unitIndex) {
 }
 
 bool Grid::containsUnitWithIndex(const unsigned int index) const {
+    if (m_units.empty()) return false;
     return std::ranges::any_of(m_units, [&](const Unit& unit) { return unit.m_unitIndex == index; });
 }

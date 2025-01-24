@@ -1,4 +1,5 @@
 #include "Unit.hpp"
+
 #include "Grid.hpp"
 
 Unit::Unit(const unsigned int index, const std::shared_ptr<Grid>& p_grid, const sf::Vector2f worldPosition)
