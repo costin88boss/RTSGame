@@ -7,8 +7,6 @@
 #include "net/ServerConnection.h"
 #include "net/ServerListener.h"
 
-#include <Windows.h>
-
 class SimpleServer : public net::ServerListener {
     void onReceiveTCP(net::ServerConnection client, sf::Packet data) {
         std::cout << "Received TCP\n";
@@ -78,10 +76,10 @@ int main() {
             if (server.isRunning()) {
                 server.update();
             }
-            if (g) {
-                SetConsoleTitle(z);
+            if (g) {  // debug
+                //SetConsoleTitle(z);
             } else {
-                SetConsoleTitle(x);
+                //SetConsoleTitle(x);
             }
             g = !g;
         }
@@ -100,10 +98,10 @@ int main() {
             if (client.isConnected()) {
                 client.update();
             }
-            if (g) {
-                SetConsoleTitle(z);
+            if (g) {  // debug
+               //  SetConsoleTitle(z);
             } else {
-                SetConsoleTitle(x);
+                //SetConsoleTitle(x);
             }
             g = !g;
         }
