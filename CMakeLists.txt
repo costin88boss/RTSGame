@@ -17,9 +17,8 @@ FetchContent_Declare(
 FetchContent_MakeAvailable(SFML)
 
 set(SOURCES
-    "src/NetTest.cpp"
-    "src/RTSGame.cpp"
-)
+    
+    "src/RTSGame.cpp"    "src/net/ServerConnection.h" "src/net/ServerConnection.cpp" "src/net/ServerListener.cpp" "src/net/ServerListener.h" "src/net/ClientListener.h" "src/net/ClientListener.cpp"  "src/net/packet/Packets.h" "src/net/packet/Packets.cpp")
 
 add_executable(${PROJECT_NAME} ${SOURCES})
 target_link_libraries(${PROJECT_NAME} PRIVATE SFML::Graphics SFML::Audio SFML::Network)

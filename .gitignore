@@ -5,3 +5,4 @@ deps/
 out/
 
 .github/
+/.gitignore
