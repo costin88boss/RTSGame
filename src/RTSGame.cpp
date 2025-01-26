@@ -7,8 +7,6 @@
 #include "net/ServerConnection.h"
 #include "net/ServerListener.h"
 
-#include <iostream>
-
 #include <Windows.h>
 
 class SimpleServer : public net::ServerListener {
@@ -42,8 +40,9 @@ class SimpleClient : public net::ClientListener {
 };
 
 int main() {
-    // netTest::testMain();
 
+    // netTest::testMain();
+    /*
     auto window = sf::RenderWindow(sf::VideoMode({720, 480}), "Hello, SFML!");
 
     Grid grid(window, 24, 16);
@@ -58,8 +57,7 @@ int main() {
     text.setFillColor(sf::Color::Green);
     // auto window = sf::RenderWindow(sf::VideoMode({720, 480}), "Hello, SFML!");
 
-    //  net::ClientListener c;
-
+    */
     uint16_t port = 33615;
 
     const char* z = "ASDASDASDTA";
@@ -136,5 +134,5 @@ int main() {
         text.setString(std::to_string(static_cast<int>(1.0f / deltaTime)));
 
         clock.restart();
-    }
+    }*/
 }

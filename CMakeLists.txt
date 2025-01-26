@@ -20,7 +20,6 @@ FetchContent_MakeAvailable(SFML)
 set(
         SOURCES
         src/RTSGame.cpp
-        src/NetTest.cpp
         src/Grid.cpp
         src/Grid.hpp
         src/Tile.cpp
