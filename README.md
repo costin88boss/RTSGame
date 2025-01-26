@@ -1,8 +1,8 @@
 # RTSGame
-A RTS multiplayer game/demo I guess...
+An RTS multiplayer game/demo I guess...
 
 ## Building from Source
-Make sure Clang and CMake are installed and run the following commmand:
+Make sure Clang and CMake are installed and run the following commmands:
 ```
 cmake -S ./ -B out/ -G "Ninja"
 cmake --build out/ --config Release --target RTSGame -j 6

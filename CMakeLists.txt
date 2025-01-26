@@ -1,4 +1,4 @@
-﻿cmake_minimum_required(VERSION 3.28)
+﻿cmake_minimum_required(VERSION 3.25)
 set(CMAKE_CXX_STANDARD 20)
 project(RTSGame)
 
@@ -14,11 +14,23 @@ FetchContent_Declare(
         EXCLUDE_FROM_ALL
         SYSTEM
 )
+
 FetchContent_MakeAvailable(SFML)
 
-set(SOURCES
-    
-    "src/RTSGame.cpp"    "src/net/ServerConnection.h" "src/net/ServerConnection.cpp" "src/net/ServerListener.cpp" "src/net/ServerListener.h" "src/net/ClientListener.h" "src/net/ClientListener.cpp"  "src/net/packet/Packets.h" "src/net/packet/Packets.cpp")
+set(
+        SOURCES
+        src/RTSGame.cpp
+        src/NetTest.cpp
+        src/Grid.cpp
+        src/Grid.hpp
+        src/Tile.cpp
+        src/Tile.hpp
+        src/Transform.cpp
+        src/Transform.hpp
+        src/Unit.cpp
+        src/Unit.hpp
+        src/Debug.hpp
+        "src/RTSGame.cpp"    "src/net/ServerConnection.h" "src/net/ServerConnection.cpp" "src/net/ServerListener.cpp" "src/net/ServerListener.h" "src/net/ClientListener.h" "src/net/ClientListener.cpp"  "src/net/packet/Packets.h" "src/net/packet/Packets.cpp")
 
 add_executable(${PROJECT_NAME} ${SOURCES})
 target_link_libraries(${PROJECT_NAME} PRIVATE SFML::Graphics SFML::Audio SFML::Network)
