@@ -37,6 +37,9 @@ bool net::ClientListener::sendTCP(packet::BasePacket packet) {
             case sf::Socket::Status::Error:
                 std::cout << "TCP send error: Unknown\n";
                 return false;
+            default:
+                std::cout << "WTF\n";
+                return false;
         }
         std::cout << "TCP send fail; Retrying\n";
     }
@@ -59,6 +62,9 @@ bool net::ClientListener::sendUDP(packet::BasePacket packet) {
                 return false;
             case sf::Socket::Status::Error:
                 std::cout << "UDP Send error: Unknown\n";
+                return false;
+            default:
+                std::cout << "WTF\n";
                 return false;
         }
         std::cout << "UDP send fail; Retrying\n";
