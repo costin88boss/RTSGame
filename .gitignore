@@ -2,8 +2,6 @@
 .idea/
 .vs/
 
-deps/
 out/
 
 .github/
-/.gitignore
