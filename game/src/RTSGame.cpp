@@ -5,22 +5,21 @@ int main() {
     // Constructor takes care of everything
     // No reason to have a start func
 
-    spdlog::error("Error {}", 69);
+    spdlog::error("Error {}", 69, 2);
 
     char* c = nullptr;
-    //
-    char z = *c;//a
+    
+   char z = *c;
 
     if (z == 3) {
      
     }
 
     int v;
+    double d = 3.14;
+    int i = 3 + d;
 
-
-    int i;
-    
-  //  try {
+   try {
 
         
         //debug::init();
@@ -40,7 +39,7 @@ int main() {
         debug::log(debug::LogLevel::FATAL, "ABC abc %d %c", -51, 'e');
         */
         //game = std::make_unique<Game>();
-    //}// catch (const std::exception& e) {
-   //     return 1;
-    //}
+    } catch (const std::exception& e) {
+       return 1;
+    }
 }

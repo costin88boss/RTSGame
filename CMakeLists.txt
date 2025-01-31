@@ -17,27 +17,38 @@ include(FetchContent)
 
 FetchContent_Declare(
     SFML
-    EXCLUDE_FROM_ALL
-    SYSTEM
     GIT_REPOSITORY https://github.com/SFML/SFML.git
     GIT_SHALLOW ON
 )
 
 FetchContent_Declare(
-    SPDLOG
-    EXCLUDE_FROM_ALL
-    SYSTEM
+    spdlog
     GIT_REPOSITORY https://github.com/gabime/spdlog
-    GIT_TAG v1.15.0
-    GIT_SHALLOW ON
+    GIT_TAG v1.x
 )
 
-FetchContent_MakeAvailable(SFML SPDLOG)
+FetchContent_MakeAvailable(SFML spdlog)
 
-# BLABLHDEg DF AO
+if (MSVC AND TARGET spdlog)
+  get_target_property(spdlog_includes spdlog INTERFACE_INCLUDE_DIRECTORIES)
+  set_target_properties(spdlog PROPERTIES INTERFACE_INCLUDE_DIRECTORIES "")
+  target_include_directories(spdlog SYSTEM INTERFACE ${spdlog_includes})
+
+
+  target_compile_options(spdlog PRIVATE /W0) # fuck my life
+endif()
+
+if (MSVC AND TARGET fmt)
+  get_target_property(fmt_includes fmt INTERFACE_INCLUDE_DIRECTORIES)
+  set_target_properties(fmt PROPERTIES INTERFACE_INCLUDE_DIRECTORIES "")
+  target_include_directories(fmt SYSTEM INTERFACE ${fmt_includes})
+
+
+  target_compile_options(fmt PRIVATE /W0) # fuck my life
+endif()
 
 add_subdirectory(game)
 
-target_link_libraries(${PROJECT_NAME} PRIVATE 
+target_link_libraries(${PROJECT_NAME} PUBLIC 
     SFML::Graphics SFML::Audio SFML::Network
-    spdlog::spdlog_header_only)
+    spdlog::spdlog)
