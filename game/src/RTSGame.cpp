@@ -20,7 +20,7 @@ int main() {
 
     int i;
     
-    try {
+  //  try {
 
         
         //debug::init();
@@ -40,7 +40,7 @@ int main() {
         debug::log(debug::LogLevel::FATAL, "ABC abc %d %c", -51, 'e');
         */
         //game = std::make_unique<Game>();
-    } catch (const std::exception& e) {
-        return 1;
-    }
+    //}// catch (const std::exception& e) {
+   //     return 1;
+    //}
 }

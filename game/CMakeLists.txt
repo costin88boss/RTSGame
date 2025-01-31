@@ -1,3 +1,5 @@
+file(COPY res/ DESTINATION ${CMAKE_RUNTIME_OUTPUT_DIRECTORY})
+
 set(SOURCES
     src/RTSGame.cpp
     src/net/ServerConnection.h
