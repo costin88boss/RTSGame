@@ -5,7 +5,7 @@ An RTS multiplayer game/demo I guess...
 Make sure CMake is installed and run the following commmands:
 ```
 cmake -S ./ -B out/ -G "Ninja Multi-Config"
-cmake --build out/ --config Release --target RTSGame -j 6
+cmake --build bin/ --config Release --target RTSGame -j 6
 ```
 **Note:** On GNU-Linux you may need to install additional dependencies, on Debian GNU-Linux and derivatives, the command is:
 ```
