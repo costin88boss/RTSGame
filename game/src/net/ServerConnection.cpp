@@ -1,5 +1,5 @@
-#include "ServerConnection.h"
-#include "ServerListener.h"
+#include "ServerConnection.hpp"
+#include "ServerListener.hpp"
 
 #include <iostream>
 

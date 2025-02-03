@@ -1,4 +1,4 @@
-#include "ServerListener.h"
+#include "ServerListener.hpp"
 #include <SFML/Network.hpp>
 
 #include <SFML/Config.hpp>
@@ -203,7 +203,7 @@ void net::ServerListener::update() {
                 if (tcpPacket.getDataSize() == 0) {
                     it->second.m_kaTCP = true;
                     std::cout << "KA UDP echo\n";
-                    it->second.sendTCP(net::packet::BasePacket());
+                    it->second.sendTCP(packet::BasePacket());
                     continue;
                 }
                 this->onReceiveTCP(it->second, tcpPacket);

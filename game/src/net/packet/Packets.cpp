@@ -1,6 +1,6 @@
-#include "Packets.h"
+#include "Packets.hpp"
 
 #include <vector>
 
-static std::vector<net::packet::BasePacket> registeredPackets;
+static std::vector<packet::BasePacket> registeredPackets;
 

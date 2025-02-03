@@ -2,11 +2,11 @@
 
 #include <SFML/Network.hpp>
 
-namespace net::packet {
+namespace packet {
 
     class BasePacket : public sf::Packet {
         // TODO
     };
 
 
-}  // namespace net::packet
+}  // namespace packet

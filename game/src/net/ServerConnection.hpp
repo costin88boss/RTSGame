@@ -1,6 +1,6 @@
 #pragma once
 #include <SFML/Network.hpp>
-#include "packet/Packets.h"
+#include "packet/Packets.hpp"
 
 namespace net {
 

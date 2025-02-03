@@ -1,4 +1,4 @@
-#include "ServerConnection.h"
+#include "ServerConnection.hpp"
 #include <SFML/Network.hpp>
 
 #pragma once
