@@ -9,13 +9,13 @@ defaults:
 jobs:
   build:
     name: ${{ matrix.platform.name }} ${{ matrix.config.name }}
-    runs-on: ${{ matrix.platform.os }}
+    runs-on: [windows-latest, ubuntu-latest, macos-latest] #${{ matrix.platform.os }}
 
     strategy:
       fail-fast: false
       matrix:
         compiler: [gcc, clang, cl]
-        os: [windows-latest, ubuntu-latest, macos-latest]
+        #os: [windows-latest, ubuntu-latest, macos-latest]
         #c_compiler: [gcc, clang, cl]
         #cpp_compiler: [g++, clang++, cl]
         config:
