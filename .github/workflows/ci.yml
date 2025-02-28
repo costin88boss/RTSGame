@@ -9,7 +9,7 @@ defaults:
 jobs:
   build:
     name: ${{ matrix.platform.name }} ${{ matrix.config.name }}
-    runs-on: [windows-latest, ubuntu-latest, macos-latest] #${{ matrix.platform.os }}
+    runs-on: ${{ matrix.platform.os }}
 
     strategy:
       fail-fast: false
